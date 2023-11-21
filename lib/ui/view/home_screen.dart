@@ -4,13 +4,64 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  HomeScreen({super.key});
+
+  final List<Map<String, dynamic>> folders = [
+    {
+      'title': 'Personal',
+      'date': '09th Feb,2023',
+      'size': '56 MBs',
+      'fileCount': '30 FILES',
+    },
+    {
+      'title': 'Academic',
+      'date': '12th Oct,2023',
+      'size': '2.26 GB',
+      'fileCount': '16 FILES',
+    },
+    {
+      'title': 'Work',
+      'date': '09th Feb,2023',
+      'size': '56 MBs',
+      'fileCount': '30 FILES',
+    },
+    {
+      'title': 'Personal',
+      'date': '09th Feb,2023',
+      'size': '56 MBs',
+      'fileCount': '30 FILES',
+    },
+    {
+      'title': 'Personal',
+      'date': '09th Feb,2023',
+      'size': '56 MBs',
+      'fileCount': '30 FILES',
+    },
+    {
+      'title': 'Personal',
+      'date': '09th Feb,2023',
+      'size': '56 MBs',
+      'fileCount': '30 FILES',
+    }
+  ];
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  Map<String, Color> categoryColors = {
+    'Personal': const Color(0xFFF2858A),
+    'Academic': const Color(0xFF8AA15A),
+    'Work': const Color(0xFFFF8F3D),
+    'Others': const Color(0xFF495E84),
+  };
+  Map<String, String> categoryImage = {
+    'Personal': 'assets/images/home_page/Fr21.png',
+    'Academic': 'assets/images/home_page/Fr20.png',
+    'Work':'assets/images/home_page/Fr19.png',
+    'Others': 'assets/images/home_page/Fr22.png',
+  };
   String name = "Akansha Sonali";
 
   @override
@@ -57,7 +108,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             const SizedBox(height: 32),
             Container(
-              padding: const EdgeInsets.all(24.0),
+              padding: const EdgeInsets.all(20.0),
               decoration: BoxDecoration(
                 color: const Color(0xffEFE8D4),
                 borderRadius: BorderRadius.circular(24),
@@ -192,7 +243,67 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ],
             ),
-            const SizedBox(height: 20),
+            Expanded(
+              child: ListView.builder(
+                itemCount: widget.folders.length,
+                itemBuilder: (context, index) {
+                  var folder = widget.folders[index];
+                  return Container(
+                    margin: const EdgeInsets.symmetric(vertical: 8.0),
+                    decoration: BoxDecoration(
+                      color: categoryColors[folder['title']]?.withOpacity(0.16),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    width: 327,
+                    height: 94,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ListTile(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          leading: Image.asset(categoryImage[folder['title']] ?? ''),
+                          title: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                '${folder['fileCount']}',
+                                style: const TextStyle(
+                                  color: Color(0xffFC9499),
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 12,
+                                ),
+                              ),
+                              Text(
+                                folder['title'],
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 15,
+                                  fontFamily: "Nunito",
+                                ),
+                              ),
+                              Text(
+                                'Size: ${folder['size']}',
+                                style: TextStyle(
+                                  color: const Color(0xff403B36).withOpacity(0.6),
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 12,
+                                ),
+                              )
+                            ],
+                          ),
+                          trailing: Text(folder['date']),
+                          onTap: () {},
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
+            ),
+
           ],
         ),
       ),

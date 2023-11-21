@@ -1,5 +1,5 @@
 import 'package:application/colors/colors.dart';
-import 'package:application/ui/view/create_first_note.dart';
+import 'package:application/ui/view/home_screen.dart';
 import 'package:application/ui/view/register_page.dart';
 import 'package:application/widgets/app_bar.dart';
 import 'package:flutter/gestures.dart';
@@ -85,21 +85,22 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: AppButton(data: "Login", onPressed: () {
-                   if(checkInformation){
-                     Navigator.push(
-                       context,
-                       MaterialPageRoute(
-                         builder: (context) => const CreateFirstNote(),
-                       ),
-                     );
-                   }
-                   else{
-                     setState(() {
-                       checkInformation = false;
-                     });
-                   }
-                  }),
+                  child: AppButton(
+                      data: "Login",
+                      onPressed: () {
+                        if (checkInformation) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => HomeScreen(),
+                            ),
+                          );
+                        } else {
+                          setState(() {
+                            checkInformation = false;
+                          });
+                        }
+                      }),
                 ),
                 SizedBox(height: screenHeight / 5),
                 Padding(
