@@ -26,32 +26,30 @@ class AppButton extends StatelessWidget {
           ],
         ),
       ),
-
-
-        child: ElevatedButton(
-          onPressed: () {
-            onPressed();
-          },
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.transparent,
-            disabledBackgroundColor: Colors.transparent,
-            shadowColor: Colors.transparent,
-            padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 5),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(30.0),
-            ),
-            elevation: 0,
+      child: ElevatedButton(
+        onPressed: () {
+          onPressed();
+        },
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.transparent,
+          disabledBackgroundColor: Colors.transparent,
+          shadowColor: Colors.transparent,
+          padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 5),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(30.0),
           ),
-          child: Text(
-            data,
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-              fontFamily: "Nunito",
-              fontSize: 20,
-            ),
+          elevation: 0,
+        ),
+        child: Text(
+          data,
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+            fontFamily: "Nunito",
+            fontSize: 20,
           ),
         ),
+      ),
     );
   }
 }

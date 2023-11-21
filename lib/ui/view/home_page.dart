@@ -1,5 +1,4 @@
 import 'package:application/colors/colors.dart';
-import 'package:application/ui/view/create_first_note.dart';
 import 'package:application/ui/view/login_page.dart';
 import 'package:application/ui/view/register_page.dart';
 import 'package:flutter/gestures.dart';
